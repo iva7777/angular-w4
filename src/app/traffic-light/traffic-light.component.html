@@ -1,0 +1,11 @@
+<div class="container">
+    <button class="hidden">Пресечи</button>
+
+    <div class="traffic-light" [ngClass]="{horizontal: isHorizontal, vertical: !isHorizontal}">
+        <div class="red" [ngClass]="{active: color === 'red'}"></div>
+        <div class="yellow" [ngClass]="{active: color === 'yellow'}"></div>
+        <div class="green" [ngClass]="{active: color === 'green'}"></div>
+    </div>
+
+    <button class="btn-cross" [disabled]="isDisabled" (click)="processCrossing()">Пресечи</button>
+</div>
