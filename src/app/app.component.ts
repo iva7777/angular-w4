@@ -53,17 +53,29 @@ export class AppComponent  implements OnInit, OnDestroy{
   processAccident(){
     if (!this.isAccident) {
       this.isAccident = true;
-      this.horizontalColor = 'yellow';
-      this.verticalColor = 'yellow';
       this.clearLightsInterval();
 
+      const toggleYellow = () => {
+        if (this.horizontalColor === 'yellow' && this.verticalColor === 'yellow') {
+          this.horizontalColor = 'off';
+          this.verticalColor = 'off'
+        } else {
+          this.horizontalColor = 'yellow';
+          this.verticalColor = 'yellow';
+        }
+      };
+
+      let blinkInterval = setInterval(toggleYellow, 500);
+
       setTimeout(() => {
+        clearInterval(blinkInterval);
         this.isAccident = false;
         this.resetLights();
         this.startLightsInterval();
       },10000);
     }
   }
+  
 
   resetLights(){
     this.verticalColor = 'red';

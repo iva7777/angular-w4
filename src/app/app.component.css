@@ -11,7 +11,7 @@
 .horizontal-container {
     display: flex;
     justify-content: space-evenly;
-    flex-direction: column;
+    /*flex-direction: column;*/
     align-items: center;
 }
 .horizontal-container .btn {
