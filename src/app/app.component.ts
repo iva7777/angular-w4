@@ -16,6 +16,7 @@ export class AppComponent  implements OnInit, OnDestroy{
   verticalColor:string = 'green';
   horizontalColor: string = 'red';
   isAccident:boolean = false;
+  isButtonDisabled:boolean = false;
 
   ngOnInit(): void {
     this.startLightsInterval();
@@ -53,6 +54,7 @@ export class AppComponent  implements OnInit, OnDestroy{
   processAccident(){
     if (!this.isAccident) {
       this.isAccident = true;
+      this.isButtonDisabled = true;
       this.clearLightsInterval();
 
       const toggleYellow = () => {
@@ -72,6 +74,10 @@ export class AppComponent  implements OnInit, OnDestroy{
         this.isAccident = false;
         this.resetLights();
         this.startLightsInterval();
+
+        setTimeout(() => {
+          this.isButtonDisabled = false;
+        }, 10000);
       },10000);
     }
   }
